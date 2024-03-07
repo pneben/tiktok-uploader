@@ -29,7 +29,7 @@ from tiktok_uploader.proxy_auth_extension.proxy_auth_extension import proxy_is_w
 
 
 def upload_video(filename=None, description='', cookies='', schedule: datetime.datetime = None, username='',
-                 password='', sessionid=None, cookies_list=None, cookies_str=None, proxy=None, *args, **kwargs):
+                 password='', sessionid=None, cookies_list=None, cookies_str=None, proxy=None, browser='chrome', *args, **kwargs):
     """
     Uploads a single TikTok video.
 
@@ -56,6 +56,7 @@ def upload_video(filename=None, description='', cookies='', schedule: datetime.d
             videos=[ { 'path': filename, 'description': description, 'schedule': schedule } ],
             auth=auth,
             proxy=proxy,
+            browser=browser,
             *args, **kwargs
         )
 

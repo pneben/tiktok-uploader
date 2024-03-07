@@ -33,6 +33,7 @@ def main():
         proxy=proxy,
         sessionid=args.sessionid,
         headless=not args.attach,
+        browser=args.browser,
     )
 
     print('-------------------------')
@@ -59,6 +60,7 @@ def get_uploader_args():
     # secondary arguments
     parser.add_argument('-t', '--schedule', help='Schedule UTC time in %Y-%m-%d %H:%M format ', default=None)
     parser.add_argument('--proxy', help='Proxy user:pass@host:port or host:port format', default=None)
+    parser.add_argument('-b', '--browser', help='Select browser ', default='chrome')
 
     # authentication arguments
     parser.add_argument('-c', '--cookies', help='The cookies you want to use')
