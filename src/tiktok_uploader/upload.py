@@ -234,6 +234,7 @@ def _change_to_upload_iframe(driver) -> None:
     driver : selenium.webdriver
     """
     logger.debug(green('changing to iframe'))
+    time.sleep(10)
     elem = driver.find_element("xpath", "//*[@data-tt='Upload_index_UploadContainer']")
     source_code = elem.get_attribute("innerHTML")
     logger.debug(source_code)
