@@ -204,19 +204,26 @@ def _go_to_upload(driver) -> None:
     # if the upload page is not open, navigate to it
     if driver.current_url != config['paths']['upload']:
         driver.get(config['paths']['upload'])
+        logger.debug(green('get config paths upload'))
+
     # otherwise, refresh the page and accept the reload alert
     else:
         _refresh_with_alert(driver)
+        logger.debug(green('refresh with driver'))
 
     # changes to the iframe
     _change_to_upload_iframe(driver)
+
 
     # waits for the iframe to load
     root_selector = EC.presence_of_element_located((By.ID, 'root'))
     WebDriverWait(driver, config['explicit_wait']).until(root_selector)
 
+    logger.debug(green('waited success'))
+
     # Return to default webpage
     driver.switch_to.default_content()
+    logger.debug(green('switched to default content'))
 
 def _change_to_upload_iframe(driver) -> None:
     """
@@ -226,11 +233,13 @@ def _change_to_upload_iframe(driver) -> None:
     ----------
     driver : selenium.webdriver
     """
+    logger.debug(green('changing to iframe'))
     iframe_selector = EC.presence_of_element_located(
         (By.XPATH, config['selectors']['upload']['iframe'])
         )
     iframe = WebDriverWait(driver, config['explicit_wait']).until(iframe_selector)
     driver.switch_to.frame(iframe)
+    logger.debug(green('changing to iframe success'))
 
 def _set_description(driver, description: str) -> None:
     """
