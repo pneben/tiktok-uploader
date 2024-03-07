@@ -234,10 +234,12 @@ def _change_to_upload_iframe(driver) -> None:
     driver : selenium.webdriver
     """
     logger.debug(green('changing to iframe'))
+    logger.debug(driver.findElement(By.ID).get_attribute('innerHTML'))
     iframe_selector = EC.presence_of_element_located(
         (By.XPATH, config['selectors']['upload']['iframe'])
         )
     iframe = WebDriverWait(driver, config['explicit_wait']).until(iframe_selector)
+    logger.debug(green('iframe found'))
     driver.switch_to.frame(iframe)
     logger.debug(green('changing to iframe success'))
 
