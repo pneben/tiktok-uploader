@@ -356,12 +356,18 @@ def _set_video(driver, path: str = '', num_retries: int = 3, **kwargs) -> None:
                 By.XPATH, config['selectors']['upload']['upload_video']
             )
             upload_box.send_keys(path)
+            logger.debug(green('keys, sent'))
+            logger.debug(green(path))
+            logger.debug(green(upload_box))
+
             # waits for the upload progress bar to disappear
             upload_finished = EC.presence_of_element_located(
                 (By.XPATH, config['selectors']['upload']['upload_finished'])
                 )
 
             WebDriverWait(driver, config['explicit_wait']).until(upload_finished)
+
+            logger.debug(green('upload finished'))
 
             # waits for the video to upload
             time.sleep(5)
@@ -372,11 +378,15 @@ def _set_video(driver, path: str = '', num_retries: int = 3, **kwargs) -> None:
             # An exception throw here means the video failed to upload an a retry is needed
             WebDriverWait(driver, config['uploading_wait']).until(upload_confirmation)
 
+            logger.debug(green('upload confirmed'))
+
             # wait until a non-draggable image is found
             process_confirmation = EC.presence_of_element_located(
                 (By.XPATH, config['selectors']['upload']['process_confirmation'])
                 )
             WebDriverWait(driver, config['explicit_wait']).until(process_confirmation)
+            logger.debug(green('process confirmed'))
+            
             return
         except TimeoutException as exception:
             print("TimeoutException occurred:\n", exception)
