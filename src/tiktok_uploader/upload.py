@@ -369,13 +369,6 @@ def _set_video(driver, path: str = '', num_retries: int = 3, **kwargs) -> None:
             logger.debug(green('upload finished'))
 
             time.sleep(10)
-
-            # wait until a non-draggable image is found
-            process_confirmation = EC.presence_of_element_located(
-                (By.XPATH, config['selectors']['upload']['process_confirmation'])
-                )
-            WebDriverWait(driver, config['explicit_wait']).until(process_confirmation)
-            logger.debug(green('process confirmed'))
             
             return
         except TimeoutException as exception:
