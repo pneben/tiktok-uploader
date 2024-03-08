@@ -617,7 +617,7 @@ def _post_video(driver) -> None:
         logger.debug(green("Trying to click on the button again"))
         driver.execute_script('document.querySelector(".btn-post > button").click()')
 
-    time.sleep(5)
+    time.sleep(7)
     # waits for the video to upload
     logger.debug(green('try to find post confirmation'))
     post_confirmation = EC.presence_of_element_located(
