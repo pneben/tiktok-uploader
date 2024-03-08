@@ -610,13 +610,14 @@ def _post_video(driver) -> None:
         post = WebDriverWait(driver, config['implicit_wait']).until(EC.element_to_be_clickable((By.XPATH, config['selectors']['upload']['post'])))
         logger.debug(green('found post button'))
         driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", post)
-        driver.execute_script("document.querySelector('iframe').contentWindow.document.querySelector('.btn-post > button').click()")
+        post.click()
         logger.debug(green('clicked post button'))
 
     except ElementClickInterceptedException:
         logger.debug(green("Trying to click on the button again"))
+        driver.execute_script('document.querySelector(".btn-post > button").click()')
 
-    time.sleep(7)
+    time.sleep(5)
     # waits for the video to upload
     logger.debug(green('try to find post confirmation'))
     post_confirmation = EC.presence_of_element_located(

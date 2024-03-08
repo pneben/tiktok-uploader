@@ -57,7 +57,7 @@ user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
 	duet = "//label[.='Duet']/following-sibling::div/input"
 	stitch = "//label[.='Stitch']/following-sibling::div/input"
 
-	post = "//div[contains(@class, 'btn-post')]"
+	post = "//div[contains(@class, 'btn-post')]//button"
 	post_confirmation = "//div[contains(@class, 'tiktok-modal__modal-title')]"
 
 	[selectors.schedule]
