@@ -181,7 +181,7 @@ def complete_upload_form(driver, path: str, description: str, schedule: datetime
         The path to the video to upload
     """
     _go_to_upload(driver)
-    #  _remove_cookies_window(driver)
+    _remove_cookies_window(driver)
     _set_video(driver, path=path, **kwargs)
     if not skip_split_window:
         _remove_split_window(driver)
@@ -201,6 +201,8 @@ def _go_to_upload(driver) -> None:
     driver : selenium.webdriver
     """
     logger.debug(green('Navigating to upload page'))
+
+    time.sleep(5)
 
     # if the upload page is not open, navigate to it
     if driver.current_url != config['paths']['upload']:
