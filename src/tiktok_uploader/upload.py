@@ -351,6 +351,7 @@ def _set_video(driver, path: str = '', num_retries: int = 3, **kwargs) -> None:
     for _ in range(num_retries):
         try:
             _change_to_upload_iframe(driver)
+            time.sleep(5)
             upload_box = driver.find_element(
                 By.XPATH, config['selectors']['upload']['upload_video']
             )
@@ -363,6 +364,7 @@ def _set_video(driver, path: str = '', num_retries: int = 3, **kwargs) -> None:
             WebDriverWait(driver, config['explicit_wait']).until(upload_finished)
 
             # waits for the video to upload
+            time.sleep(5)
             upload_confirmation = EC.presence_of_element_located(
                 (By.XPATH, config['selectors']['upload']['upload_confirmation'])
                 )
