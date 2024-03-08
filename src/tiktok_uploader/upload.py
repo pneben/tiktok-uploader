@@ -115,6 +115,8 @@ def upload_videos(videos: list = None, auth: AuthBackend = None, proxy: dict = N
             raise Exception('Proxy is not working')
     driver = auth.authenticate_agent(driver)
 
+    driver.set_window_size(2560, 1440)
+
     failed = []
     # uploads each video
     for video in videos:
