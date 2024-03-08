@@ -358,7 +358,6 @@ def _set_video(driver, path: str = '', num_retries: int = 3, **kwargs) -> None:
             upload_box.send_keys(path)
             logger.debug(green('keys, sent'))
             logger.debug(green(path))
-            logger.debug(green(upload_box))
 
             # waits for the upload progress bar to disappear
             upload_finished = EC.presence_of_element_located(
