@@ -116,6 +116,9 @@ def firefox_defaults(*args, headless: bool = False, proxy: dict = None, **kwargs
 
     options = FirefoxOptions()
 
+    options.add_argument('--width=2560')
+    options.add_argument('--height=1440')
+
     # default options
 
     if headless:

@@ -610,6 +610,7 @@ def _post_video(driver) -> None:
         post = WebDriverWait(driver, config['implicit_wait']).until(EC.element_to_be_clickable((By.XPATH, config['selectors']['upload']['post'])))
         logger.debug(green('found post button'))
         driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", post)
+        time.sleep(3)
         post.click()
         logger.debug(green('clicked post button'))
 
