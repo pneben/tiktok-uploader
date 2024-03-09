@@ -632,11 +632,21 @@ def _post_video(driver) -> None:
         driver.execute_script('document.querySelector(".btn-post > button").click()')
 
     time.sleep(5)
+
     # waits for the video to upload
     logger.debug(green('try to find post confirmation'))
+    logger.debug(green(config['selectors']['upload']['post_confirmation']))
     post_confirmation = EC.presence_of_element_located(
         (By.XPATH, config['selectors']['upload']['post_confirmation'])
         )
+    
+    # print text of post confirmation
+    try:
+        logger.debug(green(driver.find_element(By.XPATH, config['selectors']['upload']['post_confirmation']).text))
+    except:
+        pass
+    
+
     WebDriverWait(driver, config['explicit_wait']).until(post_confirmation)
 
     logger.debug(green('found post confirmation'))

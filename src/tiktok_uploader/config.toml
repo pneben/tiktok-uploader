@@ -58,7 +58,7 @@ user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
 	stitch = "//label[.='Stitch']/following-sibling::div/input"
 
 	post = "//div[contains(@class, 'btn-post')]//button"
-	post_confirmation = "//div[contains(@class, 'tiktok-modal__modal-title')]"
+	post_confirmation = "//div[@class='tiktok-modal__modal-wrapper']"
 
 	[selectors.schedule]
 	switch = "//*[@id='tux-3']"
