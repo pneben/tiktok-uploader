@@ -612,10 +612,17 @@ def _post_video(driver) -> None:
         post = WebDriverWait(driver, config['implicit_wait']).until(EC.element_to_be_clickable((By.XPATH, config['selectors']['upload']['post'])))
         logger.debug(green('found post button'))
         time.sleep(1)
+
+
+
         html = driver.find_element(By.TAG_NAME, 'html')
         html.send_keys(Keys.END)
         time.sleep(3)
-        post.click()
+        
+        actions = ActionChains(driver)
+        actions.move_to_element(post).click(post).perform()
+
+
         logger.debug(green('clicked post button'))
 
     except ElementClickInterceptedException:
