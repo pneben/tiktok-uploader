@@ -611,6 +611,8 @@ def _post_video(driver) -> None:
         logger.debug(green('Try find post button'))
         post = WebDriverWait(driver, config['implicit_wait']).until(EC.element_to_be_clickable((By.XPATH, config['selectors']['upload']['post'])))
         logger.debug(green('found post button'))
+        logger.debug(green(f'Post button text: {post.text}'))  # Log the text of the post button
+        logger.debug(green(f'Post button classes: {post.get_attribute("class")}'))  # Log the classes of the post button
         time.sleep(1)
 
 
