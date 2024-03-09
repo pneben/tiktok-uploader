@@ -42,6 +42,7 @@ user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
 	upload_video = "//input[@type='file']"
 	upload_finished = "//div[contains(@class, 'btn-cancel')]"
  	upload_confirmation = "//div[@title]"
+	error_message = "//div[@id='tux-toast-portal']//ul//li//span"
  	process_confirmation = "//div[contains(@class, 'cover-selector-image-container')]/img[contains(@class, 'cover-selector-image')]"
 	description = "//div[@contenteditable='true']"
 

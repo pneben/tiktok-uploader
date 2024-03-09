@@ -640,18 +640,21 @@ def _post_video(driver) -> None:
         (By.XPATH, config['selectors']['upload']['post_confirmation'])
         )
     
-    # print text of post confirmation
     try:
-        logger.debug(green(driver.find_element(By.XPATH, config['selectors']['upload']['post_confirmation']).text))
+        error_message = EC.presence_of_element_located((By.XPATH, config['selectors']['upload']['error_message']))
+        WebDriverWait(driver, config['explicit_wait']).until(error_message)
+        #print text
+        logger.debug(red(driver.find_element(By.XPATH, config['selectors']['upload']['error_message']).text))
     except:
         pass
-    
+
+    # print text of post confirmation
+        logger.debug(green(driver.find_element(By.XPATH, config['selectors']['upload']['post_confirmation']).text))
+
 
     WebDriverWait(driver, config['explicit_wait']).until(post_confirmation)
 
     logger.debug(green('found post confirmation'))
-
-    logger.debug(green(post_confirmation))
 
     logger.debug(green('Video posted successfully'))
 
