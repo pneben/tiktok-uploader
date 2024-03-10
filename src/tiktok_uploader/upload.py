@@ -642,7 +642,7 @@ def _post_video(driver) -> None:
     
 
     # print text of post confirmation
-        logger.debug(green(driver.find_element(By.XPATH, config['selectors']['upload']['post_confirmation']).text))
+    logger.debug(green(driver.find_element(By.XPATH, config['selectors']['upload']['post_confirmation']).text))
 
 
     WebDriverWait(driver, config['explicit_wait']).until(post_confirmation)
