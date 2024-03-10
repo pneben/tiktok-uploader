@@ -22,7 +22,7 @@ login = "https://www.tiktok.com/login/phone-or-email/email"
 upload = "https://www.tiktok.com/creator-center/upload?lang=en"
 
 [disguising]
-user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
+user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
 
 [selectors] # Selenium XPATH selectors
 
@@ -42,7 +42,6 @@ user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
 	upload_video = "//input[@type='file']"
 	upload_finished = "//div[contains(@class, 'btn-cancel')]"
  	upload_confirmation = "//div[@title]"
-	error_message = "//div[@id='tux-toast-portal']//ul//li//span"
  	process_confirmation = "//div[contains(@class, 'cover-selector-image-container')]/img[contains(@class, 'cover-selector-image')]"
 	description = "//div[@contenteditable='true']"
 
@@ -58,8 +57,8 @@ user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
 	duet = "//label[.='Duet']/following-sibling::div/input"
 	stitch = "//label[.='Stitch']/following-sibling::div/input"
 
-	post = "//div[contains(@class, 'btn-post')]//button"
-	post_confirmation = "//div[@class='tiktok-modal__modal-wrapper']"
+	post = "//div[contains(@class, 'btn-post')]"
+	post_confirmation = "//div[contains(@class, 'tiktok-modal__modal-wrapper')]//div[contains(@class, 'tiktok-modal__modal-title') and contains(text(), 'Your videos are being uploaded to TikTok!')]"
 
 	[selectors.schedule]
 	switch = "//*[@id='tux-3']"
