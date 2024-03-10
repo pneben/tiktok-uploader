@@ -613,9 +613,9 @@ def _post_video(driver) -> None:
         logger.debug(green('found post button'))
         logger.debug(green(f'Post button text: {post.text}'))  # Log the text of the post button
         logger.debug(green(f'Post button classes: {post.get_attribute("class")}'))  # Log the classes of the post button
+        # print background color of button
+        logger.debug(green(f'Post button background color: {post.value_of_css_property("background-color")}'))
         time.sleep(1)
-
-
 
         html = driver.find_element(By.TAG_NAME, 'html')
         html.send_keys(Keys.END)
@@ -623,7 +623,6 @@ def _post_video(driver) -> None:
         
         actions = ActionChains(driver)
         actions.move_to_element(post).click(post).perform()
-
 
         logger.debug(green('clicked post button'))
 
