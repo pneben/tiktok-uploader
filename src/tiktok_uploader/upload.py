@@ -362,15 +362,6 @@ def _set_video(driver, path: str = '', num_retries: int = 3, **kwargs) -> None:
             logger.debug(green('keys, sent'))
             logger.debug(green(path))
 
-            try:
-                error_message = EC.presence_of_element_located((By.XPATH, config['selectors']['upload']['error_message']))
-                WebDriverWait(driver, config['explicit_wait']).until(error_message)
-                #print text
-                logger.debug(red(driver.find_element(By.XPATH, config['selectors']['upload']['error_message']).text))
-            except:
-                pass
-
-
             # waits for the upload progress bar to disappear
             upload_finished = EC.presence_of_element_located(
                 (By.XPATH, config['selectors']['upload']['upload_finished'])
@@ -651,7 +642,7 @@ def _post_video(driver) -> None:
     
 
     # print text of post confirmation
-    logger.debug(green(driver.find_element(By.XPATH, config['selectors']['upload']['post_confirmation']).text))
+        logger.debug(green(driver.find_element(By.XPATH, config['selectors']['upload']['post_confirmation']).text))
 
 
     WebDriverWait(driver, config['explicit_wait']).until(post_confirmation)
